@@ -8,15 +8,73 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title><ui:insert name="title">Sirpway</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="estilos.css" />
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet library="css" name="font-awesome.css" />
+        <h:outputStylesheet library="css" name="jquery-jvectormap-1.2.2.css" />
+        <h:outputStylesheet library="css" name="export.css" />
+        <h:outputStylesheet library="css" name="demo.css" />
     </h:head>
 
     <h:body>
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menu Navegador</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">SIRPWAY</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.xhtml">Acerca de Nosotros</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Galeria</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Platos</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contactenos</a>
+                    </li>
+                    <li>
+                        <h:link class="page-scroll" outcome="/Pages/venta/List" value="Lista de ventas"/>
+                    </li>
+                    <!-- <li>
+                        <a class="page-scroll" href="Pages/crearVenta">Reserva</a>
+                    </li> -->
+                    <!--<li>
+                        <a class="page-scroll" href="español/ingreso.html">Ingreso</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
         <h1>
             <ui:insert name="title">Default Title</ui:insert>
         </h1>
         <p>
             <ui:insert name="body">Default Body</ui:insert>
         </p>
+        <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <span class="copyright">Copyright &copy; SIRPWAY Contactenos 018000930930 Direccion: Calle 67 # 7-38 - Quinta Camacho .</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
     </h:body>
 
 </html>
