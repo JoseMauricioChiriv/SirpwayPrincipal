@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMeseroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMeseroLabel_idMeseros}" for="idMeseros" />
+                    <h:inputText id="idMeseros" value="#{meseroController.selected.idMeseros}" title="#{bundle.CreateMeseroTitle_idMeseros}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_idMeseros}"/>
+                    <h:outputLabel value="#{bundle.CreateMeseroLabel_eps}" for="eps" />
+                    <h:inputText id="eps" value="#{meseroController.selected.eps}" title="#{bundle.CreateMeseroTitle_eps}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_eps}"/>
+                    <h:outputLabel value="#{bundle.CreateMeseroLabel_sueldo}" for="sueldo" />
+                    <h:inputText id="sueldo" value="#{meseroController.selected.sueldo}" title="#{bundle.CreateMeseroTitle_sueldo}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_sueldo}"/>
+                    <h:outputLabel value="#{bundle.CreateMeseroLabel_personasidPersona}" for="personasidPersona" />
+                    <h:selectOneMenu id="personasidPersona" value="#{meseroController.selected.personasidPersona}" title="#{bundle.CreateMeseroTitle_personasidPersona}" required="true" requiredMessage="#{bundle.CreateMeseroRequiredMessage_personasidPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{meseroController.create}" value="#{bundle.CreateMeseroSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{meseroController.prepareList}" value="#{bundle.CreateMeseroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMeseroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewComensalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewComensalLabel_idComensales}"/>
+                    <h:outputText value="#{comensalController.selected.idComensales}" title="#{bundle.ViewComensalTitle_idComensales}"/>
+                    <h:outputText value="#{bundle.ViewComensalLabel_observaciones}"/>
+                    <h:outputText value="#{comensalController.selected.observaciones}" title="#{bundle.ViewComensalTitle_observaciones}"/>
+                    <h:outputText value="#{bundle.ViewComensalLabel_quejasReclamo}"/>
+                    <h:outputText value="#{comensalController.selected.quejasReclamo}" title="#{bundle.ViewComensalTitle_quejasReclamo}"/>
+                    <h:outputText value="#{bundle.ViewComensalLabel_personasidPersona}"/>
+                    <h:outputText value="#{comensalController.selected.personasidPersona}" title="#{bundle.ViewComensalTitle_personasidPersona}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{comensalController.destroyAndView}" value="#{bundle.ViewComensalDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewComensalEditLink}"/>
+                <br />
+                <h:commandLink action="#{comensalController.prepareCreate}" value="#{bundle.ViewComensalCreateLink}" />
+                <br />
+                <h:commandLink action="#{comensalController.prepareList}" value="#{bundle.ViewComensalShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewComensalIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

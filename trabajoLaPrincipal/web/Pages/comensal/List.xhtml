@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListComensalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListComensalEmpty}" rendered="#{comensalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{comensalController.items.rowCount > 0}">
+                    <h:outputText value="#{comensalController.pagination.pageFirstItem + 1}..#{comensalController.pagination.pageLastItem + 1}/#{comensalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{comensalController.previous}" value="#{bundle.Previous} #{comensalController.pagination.pageSize}" rendered="#{comensalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{comensalController.next}" value="#{bundle.Next} #{comensalController.pagination.pageSize}" rendered="#{comensalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{comensalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComensalTitle_idComensales}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idComensales}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComensalTitle_observaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observaciones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComensalTitle_quejasReclamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quejasReclamo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListComensalTitle_personasidPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personasidPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{comensalController.prepareView}" value="#{bundle.ListComensalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{comensalController.prepareEdit}" value="#{bundle.ListComensalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{comensalController.destroy}" value="#{bundle.ListComensalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{comensalController.prepareCreate}" value="#{bundle.ListComensalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListComensalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

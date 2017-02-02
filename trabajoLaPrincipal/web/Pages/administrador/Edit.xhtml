@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAdministradorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAdministradorLabel_idAdministrador}" for="idAdministrador" />
+                    <h:inputText id="idAdministrador" value="#{administradorController.selected.idAdministrador}" title="#{bundle.EditAdministradorTitle_idAdministrador}" required="true" requiredMessage="#{bundle.EditAdministradorRequiredMessage_idAdministrador}"/>
+                    <h:outputLabel value="#{bundle.EditAdministradorLabel_tituloAdministrador}" for="tituloAdministrador" />
+                    <h:inputText id="tituloAdministrador" value="#{administradorController.selected.tituloAdministrador}" title="#{bundle.EditAdministradorTitle_tituloAdministrador}" />
+                    <h:outputLabel value="#{bundle.EditAdministradorLabel_sueldo}" for="sueldo" />
+                    <h:inputText id="sueldo" value="#{administradorController.selected.sueldo}" title="#{bundle.EditAdministradorTitle_sueldo}" />
+                    <h:outputLabel value="#{bundle.EditAdministradorLabel_eps}" for="eps" />
+                    <h:inputText id="eps" value="#{administradorController.selected.eps}" title="#{bundle.EditAdministradorTitle_eps}" />
+                    <h:outputLabel value="#{bundle.EditAdministradorLabel_personasidPersona}" for="personasidPersona" />
+                    <h:selectOneMenu id="personasidPersona" value="#{administradorController.selected.personasidPersona}" title="#{bundle.EditAdministradorTitle_personasidPersona}" required="true" requiredMessage="#{bundle.EditAdministradorRequiredMessage_personasidPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{administradorController.update}" value="#{bundle.EditAdministradorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAdministradorViewLink}"/>
+                <br />
+                <h:commandLink action="#{administradorController.prepareList}" value="#{bundle.EditAdministradorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAdministradorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

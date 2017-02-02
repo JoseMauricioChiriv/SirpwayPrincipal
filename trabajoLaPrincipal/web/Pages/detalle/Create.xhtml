@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetalleTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDetalleLabel_idDetalle}" for="idDetalle" />
+                    <h:inputText id="idDetalle" value="#{detalleController.selected.idDetalle}" title="#{bundle.CreateDetalleTitle_idDetalle}" required="true" requiredMessage="#{bundle.CreateDetalleRequiredMessage_idDetalle}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleLabel_cantidadProductos}" for="cantidadProductos" />
+                    <h:inputText id="cantidadProductos" value="#{detalleController.selected.cantidadProductos}" title="#{bundle.CreateDetalleTitle_cantidadProductos}" />
+                    <h:outputLabel value="#{bundle.CreateDetalleLabel_idVentas}" for="idVentas" />
+                    <h:selectOneMenu id="idVentas" value="#{detalleController.selected.idVentas}" title="#{bundle.CreateDetalleTitle_idVentas}" >
+                        <f:selectItems value="#{ventaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDetalleLabel_idProductos}" for="idProductos" />
+                    <h:selectOneMenu id="idProductos" value="#{detalleController.selected.idProductos}" title="#{bundle.CreateDetalleTitle_idProductos}" >
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleController.create}" value="#{bundle.CreateDetalleSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleController.prepareList}" value="#{bundle.CreateDetalleShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDetalleIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditComensalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditComensalLabel_idComensales}" for="idComensales" />
+                    <h:inputText id="idComensales" value="#{comensalController.selected.idComensales}" title="#{bundle.EditComensalTitle_idComensales}" required="true" requiredMessage="#{bundle.EditComensalRequiredMessage_idComensales}"/>
+                    <h:outputLabel value="#{bundle.EditComensalLabel_observaciones}" for="observaciones" />
+                    <h:inputText id="observaciones" value="#{comensalController.selected.observaciones}" title="#{bundle.EditComensalTitle_observaciones}" />
+                    <h:outputLabel value="#{bundle.EditComensalLabel_quejasReclamo}" for="quejasReclamo" />
+                    <h:inputText id="quejasReclamo" value="#{comensalController.selected.quejasReclamo}" title="#{bundle.EditComensalTitle_quejasReclamo}" />
+                    <h:outputLabel value="#{bundle.EditComensalLabel_personasidPersona}" for="personasidPersona" />
+                    <h:selectOneMenu id="personasidPersona" value="#{comensalController.selected.personasidPersona}" title="#{bundle.EditComensalTitle_personasidPersona}" required="true" requiredMessage="#{bundle.EditComensalRequiredMessage_personasidPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{comensalController.update}" value="#{bundle.EditComensalSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditComensalViewLink}"/>
+                <br />
+                <h:commandLink action="#{comensalController.prepareList}" value="#{bundle.EditComensalShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditComensalIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

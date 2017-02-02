@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditReservaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditReservaLabel_idReservas}" for="idReservas" />
+                    <h:inputText id="idReservas" value="#{reservaController.selected.idReservas}" title="#{bundle.EditReservaTitle_idReservas}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_idReservas}"/>
+                    <h:outputLabel value="#{bundle.EditReservaLabel_tipoEvento}" for="tipoEvento" />
+                    <h:inputText id="tipoEvento" value="#{reservaController.selected.tipoEvento}" title="#{bundle.EditReservaTitle_tipoEvento}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_tipoEvento}"/>
+                    <h:outputLabel value="#{bundle.EditReservaLabel_fechaReserva}" for="fechaReserva" />
+                    <h:inputText id="fechaReserva" value="#{reservaController.selected.fechaReserva}" title="#{bundle.EditReservaTitle_fechaReserva}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_fechaReserva}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditReservaLabel_numeroPersona}" for="numeroPersona" />
+                    <h:inputText id="numeroPersona" value="#{reservaController.selected.numeroPersona}" title="#{bundle.EditReservaTitle_numeroPersona}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_numeroPersona}"/>
+                    <h:outputLabel value="#{bundle.EditReservaLabel_estadoReserva}" for="estadoReserva" />
+                    <h:inputText id="estadoReserva" value="#{reservaController.selected.estadoReserva}" title="#{bundle.EditReservaTitle_estadoReserva}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_estadoReserva}"/>
+                    <h:outputLabel value="#{bundle.EditReservaLabel_mesasidMesas}" for="mesasidMesas" />
+                    <h:selectOneMenu id="mesasidMesas" value="#{reservaController.selected.mesasidMesas}" title="#{bundle.EditReservaTitle_mesasidMesas}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_mesasidMesas}">
+                        <f:selectItems value="#{mesaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditReservaLabel_comensalesidComensales}" for="comensalesidComensales" />
+                    <h:selectOneMenu id="comensalesidComensales" value="#{reservaController.selected.comensalesidComensales}" title="#{bundle.EditReservaTitle_comensalesidComensales}" required="true" requiredMessage="#{bundle.EditReservaRequiredMessage_comensalesidComensales}">
+                        <f:selectItems value="#{comensalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{reservaController.update}" value="#{bundle.EditReservaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditReservaViewLink}"/>
+                <br />
+                <h:commandLink action="#{reservaController.prepareList}" value="#{bundle.EditReservaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditReservaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

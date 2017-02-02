@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMesaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMesaLabel_idMesas}" for="idMesas" />
+                    <h:inputText id="idMesas" value="#{mesaController.selected.idMesas}" title="#{bundle.CreateMesaTitle_idMesas}" required="true" requiredMessage="#{bundle.CreateMesaRequiredMessage_idMesas}"/>
+                    <h:outputLabel value="#{bundle.CreateMesaLabel_estadoMesa}" for="estadoMesa" />
+                    <h:inputText id="estadoMesa" value="#{mesaController.selected.estadoMesa}" title="#{bundle.CreateMesaTitle_estadoMesa}" required="true" requiredMessage="#{bundle.CreateMesaRequiredMessage_estadoMesa}"/>
+                    <h:outputLabel value="#{bundle.CreateMesaLabel_zonasidZona}" for="zonasidZona" />
+                    <h:selectOneMenu id="zonasidZona" value="#{mesaController.selected.zonasidZona}" title="#{bundle.CreateMesaTitle_zonasidZona}" required="true" requiredMessage="#{bundle.CreateMesaRequiredMessage_zonasidZona}">
+                        <f:selectItems value="#{zonaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mesaController.create}" value="#{bundle.CreateMesaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mesaController.prepareList}" value="#{bundle.CreateMesaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMesaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

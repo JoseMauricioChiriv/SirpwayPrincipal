@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateVentaLabel_fechaVenta}" for="fechaVenta" />
+                    <h:inputText id="fechaVenta" value="#{ventaController.selected.fechaVenta}" title="#{bundle.CreateVentaTitle_fechaVenta}" required="true" requiredMessage="#{bundle.CreateVentaRequiredMessage_fechaVenta}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateVentaLabel_ivaVenta}" for="ivaVenta" />
+                    <h:inputText id="ivaVenta" value="#{ventaController.selected.ivaVenta}" title="#{bundle.CreateVentaTitle_ivaVenta}" required="true" requiredMessage="#{bundle.CreateVentaRequiredMessage_ivaVenta}"/>
+                    <h:outputLabel value="#{bundle.CreateVentaLabel_sucursalesIdsucursales}" for="sucursalesIdsucursales" />
+                    <h:selectOneMenu id="sucursalesIdsucursales" value="#{ventaController.selected.sucursalesIdsucursales}" title="#{bundle.CreateVentaTitle_sucursalesIdsucursales}" required="true" requiredMessage="#{bundle.CreateVentaRequiredMessage_sucursalesIdsucursales}">
+                        <f:selectItems value="#{sucursalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateVentaLabel_meserosidMeseros}" for="meserosidMeseros" />
+                    <h:selectOneMenu id="meserosidMeseros" value="#{ventaController.selected.meserosidMeseros}" title="#{bundle.CreateVentaTitle_meserosidMeseros}" required="true" requiredMessage="#{bundle.CreateVentaRequiredMessage_meserosidMeseros}">
+                        <f:selectItems value="#{meseroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ventaController.create}" value="#{bundle.CreateVentaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{ventaController.prepareList}" value="#{bundle.CreateVentaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateVentaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

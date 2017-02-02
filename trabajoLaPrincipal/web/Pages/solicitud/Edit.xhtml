@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSolicitudTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_idSolicitud}" for="idSolicitud" />
+                    <h:inputText id="idSolicitud" value="#{solicitudController.selected.idSolicitud}" title="#{bundle.EditSolicitudTitle_idSolicitud}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_idSolicitud}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_fechaHoraPqrs}" for="fechaHoraPqrs" />
+                    <h:inputText id="fechaHoraPqrs" value="#{solicitudController.selected.fechaHoraPqrs}" title="#{bundle.EditSolicitudTitle_fechaHoraPqrs}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_fechaHoraPqrs}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{solicitudController.selected.observacion}" title="#{bundle.EditSolicitudTitle_observacion}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_observacion}"/>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_tipoSolicitudesidTipoSolicitud}" for="tipoSolicitudesidTipoSolicitud" />
+                    <h:selectOneMenu id="tipoSolicitudesidTipoSolicitud" value="#{solicitudController.selected.tipoSolicitudesidTipoSolicitud}" title="#{bundle.EditSolicitudTitle_tipoSolicitudesidTipoSolicitud}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_tipoSolicitudesidTipoSolicitud}">
+                        <f:selectItems value="#{tiposolicitudController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_personasidPersona}" for="personasidPersona" />
+                    <h:selectOneMenu id="personasidPersona" value="#{solicitudController.selected.personasidPersona}" title="#{bundle.EditSolicitudTitle_personasidPersona}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_personasidPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSolicitudLabel_administradoresidAdministrador}" for="administradoresidAdministrador" />
+                    <h:selectOneMenu id="administradoresidAdministrador" value="#{solicitudController.selected.administradoresidAdministrador}" title="#{bundle.EditSolicitudTitle_administradoresidAdministrador}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_administradoresidAdministrador}">
+                        <f:selectItems value="#{administradorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{solicitudController.update}" value="#{bundle.EditSolicitudSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSolicitudViewLink}"/>
+                <br />
+                <h:commandLink action="#{solicitudController.prepareList}" value="#{bundle.EditSolicitudShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSolicitudIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

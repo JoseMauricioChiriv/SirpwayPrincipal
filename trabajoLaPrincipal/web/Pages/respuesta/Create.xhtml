@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRespuestaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRespuestaLabel_idRespueasta}" for="idRespueasta" />
+                    <h:inputText id="idRespueasta" value="#{respuestaController.selected.idRespueasta}" title="#{bundle.CreateRespuestaTitle_idRespueasta}" required="true" requiredMessage="#{bundle.CreateRespuestaRequiredMessage_idRespueasta}"/>
+                    <h:outputLabel value="#{bundle.CreateRespuestaLabel_fechaHoraRespuesta}" for="fechaHoraRespuesta" />
+                    <h:inputText id="fechaHoraRespuesta" value="#{respuestaController.selected.fechaHoraRespuesta}" title="#{bundle.CreateRespuestaTitle_fechaHoraRespuesta}" required="true" requiredMessage="#{bundle.CreateRespuestaRequiredMessage_fechaHoraRespuesta}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateRespuestaLabel_observacione}" for="observacione" />
+                    <h:inputText id="observacione" value="#{respuestaController.selected.observacione}" title="#{bundle.CreateRespuestaTitle_observacione}" required="true" requiredMessage="#{bundle.CreateRespuestaRequiredMessage_observacione}"/>
+                    <h:outputLabel value="#{bundle.CreateRespuestaLabel_solicitudesidSolicitud}" for="solicitudesidSolicitud" />
+                    <h:selectOneMenu id="solicitudesidSolicitud" value="#{respuestaController.selected.solicitudesidSolicitud}" title="#{bundle.CreateRespuestaTitle_solicitudesidSolicitud}" required="true" requiredMessage="#{bundle.CreateRespuestaRequiredMessage_solicitudesidSolicitud}">
+                        <f:selectItems value="#{solicitudController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRespuestaLabel_administradoresidAdministrador}" for="administradoresidAdministrador" />
+                    <h:selectOneMenu id="administradoresidAdministrador" value="#{respuestaController.selected.administradoresidAdministrador}" title="#{bundle.CreateRespuestaTitle_administradoresidAdministrador}" required="true" requiredMessage="#{bundle.CreateRespuestaRequiredMessage_administradoresidAdministrador}">
+                        <f:selectItems value="#{administradorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{respuestaController.create}" value="#{bundle.CreateRespuestaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{respuestaController.prepareList}" value="#{bundle.CreateRespuestaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRespuestaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
