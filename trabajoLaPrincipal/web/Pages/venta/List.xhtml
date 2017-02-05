@@ -3,34 +3,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListVentaTitle}"></h:outputText>
+            <h:outputText value="Lista de ventas"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <div class="col-lg-offset-3" >
-                <h:form styleClass="jsfcrud_list_form">
-                    <div class="col-lg-offset-10">
-                        <h:panelGroup id="messagePanel" layout="block">
-                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                        </h:panelGroup>
-                        <h:outputText escape="false" value="#{bundle.ListVentaEmpty}" rendered="#{ventaController.items.rowCount == 0}"/>
-                    </div>        
+            <h:form styleClass="jsfcrud_list_form">
+                <div class="col-lg-offset-3">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                </div>
+                <div class="col-lg-offset-3" >
+                    <h:outputText escape="false" value="#{bundle.ListVentaEmpty}" rendered="#{ventaController.items.rowCount == 0}"/>
                     <h:panelGroup rendered="#{ventaController.items.rowCount > 0}">
-                        <h:outputText value="#{ventaController.pagination.pageFirstItem + 1}..#{ventaController.pagination.pageLastItem + 1}/#{ventaController.pagination.itemsCount}"/>&nbsp;
-                        <h:commandLink action="#{ventaController.previous}" value="#{bundle.Previous} #{ventaController.pagination.pageSize}" rendered="#{ventaController.pagination.hasPreviousPage}"/>&nbsp;
-                        <h:commandLink action="#{ventaController.next}" value="#{bundle.Next} #{ventaController.pagination.pageSize}" rendered="#{ventaController.pagination.hasNextPage}"/>&nbsp;
+                        <div class="text-justify">
+                            <h:outputText value="#{ventaController.pagination.pageFirstItem + 1}..#{ventaController.pagination.pageLastItem + 1}/#{ventaController.pagination.itemsCount}"/>&nbsp;
+                            <h:commandLink action="#{ventaController.previous}" value="#{bundle.Previous} #{ventaController.pagination.pageSize}" rendered="#{ventaController.pagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{ventaController.next}" value="#{bundle.Next} #{ventaController.pagination.pageSize}" rendered="#{ventaController.pagination.hasNextPage}"/>&nbsp;
+                        </div>
                         <h:dataTable value="#{ventaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListVentaTitle_idVentas}"/>
+                                    <h:outputText value="ID venta"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idVentas}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListVentaTitle_fechaVenta}"/>
+                                    <h:outputText value="Fecha y hora"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaVenta}">
                                     <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -38,25 +41,25 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListVentaTitle_ivaVenta}"/>
+                                    <h:outputText value="Iva de la venta"/>
                                 </f:facet>
                                 <h:outputText value="#{item.ivaVenta}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListVentaTitle_sucursalesIdsucursales}"/>
+                                    <h:outputText value="Sucursal"/>
                                 </f:facet>
                                 <h:outputText value="#{item.sucursalesIdsucursales}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListVentaTitle_meserosidMeseros}"/>
+                                    <h:outputText value="Mesero"/>
                                 </f:facet>
                                 <h:outputText value="#{item.meserosidMeseros}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="&nbsp;"/>
+                                    <h:outputText value="Opciones"/>
                                 </f:facet>
                                 <h:commandLink action="#{ventaController.prepareView}" value="#{bundle.ListVentaViewLink}"/>
                                 <h:outputText value=" "/>
@@ -65,13 +68,13 @@
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
-                    <br />
-                    <h:commandLink action="#{ventaController.prepareCreate}" value="#{bundle.ListVentaCreateLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ListVentaIndexLink}"/>
-                </h:form>
-            </div>
+                </div>
+                <br />
+                <p:button outcome="Create" value="Crear nueva venta"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="Volver al inicio"/>
+            </h:form>
         </ui:define>
     </ui:composition>
 

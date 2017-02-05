@@ -6,7 +6,7 @@
         <link href="resources/css/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/> 
         <link href="resources/css/export.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/demo.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="resources/images/logotipoprincipal.jpg" />
@@ -48,9 +48,9 @@
                             <li>
                                 <h:link class="page-scroll" outcome="/Pages/venta/List" value="Lista de ventas"/>
                             </li>
-                            <!-- <li>
-                                <a class="page-scroll" href="Pages/crearVenta">Reserva</a>
-                            </li> -->
+                            <li>
+                                <h:link outcome="/Pages/solicitud/Create" value="Crear solicitud"/>
+                            </li>
                             <!--<li>
                                 <a class="page-scroll" href="español/ingreso.html">Ingreso</a>
                             </li> -->
@@ -553,21 +553,7 @@
 
         </body>
     </h:body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<br />
+<br />
 <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
 <br />
 <h:link outcome="/Pages/administrador/List" value="Show All Administrador Items"/>
@@ -591,13 +577,14 @@
 <h:link outcome="/Pages/respuesta/List" value="Show All Respuesta Items"/>
 <br />
 <h:link outcome="/Pages/rol/List" value="Show All Rol Items"/>
-<br />
-<h:link outcome="/Pages/solicitud/List" value="Show All Solicitud Items"/>
+<!--<br />
+<h:link outcome="/Pages/solicitud/List" value="Show All Solicitud Items"/>-->
 <br />
 <h:link outcome="/Pages/sucursal/List" value="Show All Sucursal Items"/>
 <br />
 <h:link outcome="/Pages/tiposolicitud/List" value="Show All Tiposolicitud Items"/>
+<!--<br />
+<h:link outcome="/Pages/venta/List" value="Show All Venta Items"/>-->
 <br />
-<h:link outcome="/Pages/venta/List" value="Show All Venta Items"/>
-<br />
-<h:link outcome="/Pages/zona/List" value="Show All Zona Items"/>-->
+<h:link outcome="/Pages/zona/List" value="Show All Zona Items"/>
+</html>

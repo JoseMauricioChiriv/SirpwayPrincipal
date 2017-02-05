@@ -3,17 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.EditSolicitudTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            <div class="col-lg-offset-3">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+            </div>
             <h:form>
+                <div class="col-lg-offset-3">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditSolicitudLabel_idSolicitud}" for="idSolicitud" />
                     <h:inputText id="idSolicitud" value="#{solicitudController.selected.idSolicitud}" title="#{bundle.EditSolicitudTitle_idSolicitud}" required="true" requiredMessage="#{bundle.EditSolicitudRequiredMessage_idSolicitud}"/>
@@ -36,15 +40,17 @@
                         <f:selectItems value="#{administradorController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{solicitudController.update}" value="#{bundle.EditSolicitudSaveLink}"/>
+                </div>
+                <h:commandLink action="#{solicitudController.update}" value="Guardar"/>
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditSolicitudViewLink}"/>
-                <br />
-                <h:commandLink action="#{solicitudController.prepareList}" value="#{bundle.EditSolicitudShowAllLink}" immediate="true"/>
+                <p:button outcome="View" value="Ver solicitud"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.EditSolicitudIndexLink}" />
+                <p:button outcome="List" value="#{bundle.EditSolicitudShowAllLink}"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="#{bundle.EditSolicitudIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

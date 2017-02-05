@@ -3,39 +3,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ViewVentaTitle}"></h:outputText>
+            <h:outputText value="Vista de la venta"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+            <div class="col-lg-offset-3">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+            </div>
             <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewVentaLabel_fechaVenta}"/>
-                    <h:outputText value="#{ventaController.selected.fechaVenta}" title="#{bundle.ViewVentaTitle_fechaVenta}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                    </h:outputText>
-                    <h:outputText value="#{bundle.ViewVentaLabel_ivaVenta}"/>
-                    <h:outputText value="#{ventaController.selected.ivaVenta}" title="#{bundle.ViewVentaTitle_ivaVenta}"/>
-                    <h:outputText value="#{bundle.ViewVentaLabel_sucursalesIdsucursales}"/>
-                    <h:outputText value="#{ventaController.selected.sucursalesIdsucursales}" title="#{bundle.ViewVentaTitle_sucursalesIdsucursales}"/>
-                    <h:outputText value="#{bundle.ViewVentaLabel_meserosidMeseros}"/>
-                    <h:outputText value="#{ventaController.selected.meserosidMeseros}" title="#{bundle.ViewVentaTitle_meserosidMeseros}"/>
-                </h:panelGrid>
+                <div class="col-lg-offset-3">
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Fecha de la venta"/>
+                        <h:outputText value="#{ventaController.selected.fechaVenta}" title="#{bundle.ViewVentaTitle_fechaVenta}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="Iva de la venta"/>
+                        <h:outputText value="#{ventaController.selected.ivaVenta}" title="#{bundle.ViewVentaTitle_ivaVenta}"/>
+                        <h:outputText value="Sucursal de la venta"/>
+                        <h:outputText value="#{ventaController.selected.sucursalesIdsucursales}" title="#{bundle.ViewVentaTitle_sucursalesIdsucursales}"/>
+                        <h:outputText value="Mesero de la venta"/>
+                        <h:outputText value="#{ventaController.selected.meserosidMeseros}" title="#{bundle.ViewVentaTitle_meserosidMeseros}"/>
+                    </h:panelGrid>
+                </div>
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewVentaEditLink}"/>
-                <br />
-                <h:commandLink action="#{ventaController.prepareCreate}" value="#{bundle.ViewVentaCreateLink}" />
-                <br />
-                <h:commandLink action="#{ventaController.prepareList}" value="#{bundle.ViewVentaShowAllLink}"/>
+                <p:button outcome="Edit" value="Editar"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ViewVentaIndexLink}"/>
+                <p:button outcome="Create.xhtml" value="Crear nueva venta" />
+                <br />
+                <br />
+                <p:button outcome="List" value="Ver lista de ventas"/>
+                <br />
+                <br />
+                <p:button outcome="/index" value="Volver al inicio"/>
 
             </h:form>
         </ui:define>
