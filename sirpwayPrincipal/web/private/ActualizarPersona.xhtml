@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="../WEB-INF/template/templatePrincipal.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Actualizar Persona"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:messages errorClass="errors" showDetail="true" showSummary="true" warnStyle="color: blue" infoStyle="color: green" errorStyle="color: red"/>
+            <h:form id="contactForm">
+                <div class="container">
+
+                    <div class="">
+                        <p:outputLabel class="col-xs-3" value="*Primer Nombre" for="PrimerNombre"/>
+                        <p:inputText disabled="True" class="col-xs-3" id="PrimerNombre" title="Ingrese nombre1: " value="#{personaController.persona.primerNombre}"/>
+                        <h:message for="PrimerNombre"/>
+                    </div>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="Segundo Nombre" for="SegundoNombre"/>
+                        <p:inputText class="col-xs-3" id="SegundoNombre" title="Ingrese nombre2: " value="#{personaController.persona.segundoNombre}"/> 
+                        <h:message for="SegundoNombre"/>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="*Primer Apellido" for="PrimerApellido"/>
+                        <p:inputText class="col-xs-3" id="PrimerApellido" title="Ingrese apellido1: " value="#{personaController.persona.primerApellido}"/> 
+                        <h:message for="PrimerApellido"/>
+                    </div>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="*Segundo apellido" for="SegundoApellido"/>
+                        <p:inputText class="col-xs-3" id="SegundoApellido" title="Ingrese apellido2: " value="#{personaController.persona.segundoApellido}"/> 
+                        <h:message for="SegundoApellido"/>
+                    </div>
+                    <br/>
+                    <br/>
+
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="*Fecha nacimiento" for="FechaNacimiento"/>
+                        <p:inputText class="col-xs-6" type="date" id="FechaNacimiento" title="Ingrese fecha nacimiento: " value="#{personaController.persona.fechaNacimiento}">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </p:inputText>
+                        <h:message for="FechaNacimiento"/>
+                    </div>
+                    <br/>
+                    <br/>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="*Genero" for="Genero"/>
+                        <h:selectOneRadio id="Genero" value="Ingrese genero">
+                            <f:selectItem itemLabel="Femenino" itemValue="Femenino"/>
+                            <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+                            <f:selectItem itemLabel="Otro" itemValue="Otro"/>
+                        </h:selectOneRadio>   
+                        <h:message for="Genero"/>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="*Telefono" for="Telefono"/>
+                        <p:inputText class="col-xs-6" type="number" id="Telefono" title="Ingrese Telefono: " value="#{personaController.persona.telefono}"/> 
+                        <h:message for="Telefono"/>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="Direccion" for="Direccion"/>
+                        <p:inputText class="col-xs-6" id="Direccion" title="Ingrese direccion: " value="#{personaController.persona.direccion}"/>
+                        <h:message for="Direccion"/>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="*Correo electronico" for="Correo"/>
+                        <p:inputText class="col-xs-6" type="email" id="Correo" title="Ingrese correo: " value="#{personaController.persona.correoElectronico}"/> 
+                        <h:message for="Correo"/>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <p:outputLabel class="col-xs-3 control-label" value="*Contrseña" for="Contrasenia"/>
+                        <p:inputText class="col-xs-6" type="password" id="Contrasenia" title="Ingrese contrseña: " value="#{personaController.persona.contraseña}"/> 
+                        <h:message for="Contrasenia"/>
+                    </div>
+                    <br/>
+
+                    <h:commandButton id="btnActualizar" value="Actualizar" actionListener="#{personaController.actualizarPersona(Acp)}"/>
+
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>    
+</html>

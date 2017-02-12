@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="../WEB-INF/template/templatePrincipal.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Listar Persona"/>
+        </ui:define>
+        <ui:define name="content">
+            <f:view>
+                <h:form>
+                    <h1><h:outputText value="Listar Persona"/></h1>
+                    <p:dataTable value="#{personaController.listarPersona()}" var="Item">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cedula"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.idPersona}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Primer nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.primerNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Segundo nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.segundoNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Primer apellido"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.primerApellido}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Segundo apellido"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.segundoApellido}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha Necimiento"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.fechaNacimiento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Genero"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.genero}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Telefono"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.telefono}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Direccion"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.direccion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="E-mail"/>
+                            </f:facet>
+                            <h:outputText value="#{Item.correoElectronico}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Eliminar"/>
+                            </f:facet>
+                            <h:commandButton id="btnEliminar" value="Eliminar" actionListener="#{personaController.EliminarPersona(persona)}" onclick="return confirm('¿esta seguro de eliminar el elemento seleccionado?')"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Editar"/>
+                            </f:facet>
+                            <h:commandButton id="btnEditar" value="Editar" actionListener="#{personaController.redireccion(Acp)}" action="ActualizarPersona.xhtml"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+</html>
